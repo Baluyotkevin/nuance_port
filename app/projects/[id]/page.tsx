@@ -23,7 +23,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const photos = project.projectPhotos ?? [];
   const videos = project.videos ?? [];
   const vimeoUrls = project.vimeoUrl ?? [];
-  const [mainVimeo, ...otherVimeo] = vimeoUrls;
+  // const [mainVimeo, ...otherVimeo] = vimeoUrls;
 
   const wrap = "mx-auto w-full max-w-[1440px]"; // videos + photos only
   const gap = "gap-8 md:gap-14";
@@ -40,25 +40,37 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             ): null}
 
-                {mainVimeo && (
+                {/* {mainVimeo && (
           <div className="mx-auto mb-10 w-full max-w-[1000px] md:mb-16">
             <VimeoEmbed url={mainVimeo} title={project.title} />
           </div>
         )}
           {otherVimeo.length > 0 && (
           <div
-            className={
-              id === "1"
-                ? twoColumns
-                : `${wrap} mb-8 mt-8 grid grid-cols-2 md:grid-cols-3 ${gap}`
+            className={ `${wrap} mb-8 mt-8 grid grid-cols-2 md:grid-cols-3 ${gap}`
             }
           >
             {otherVimeo.map((url) => (
               <VimeoEmbed key={url} url={url} title={project.title} />
             ))}
           </div>
-        )}
-
+        )} */}
+        {vimeoUrls.length === 1 ? (
+  // exactly 1 link: big centered player
+        <div className="mx-auto mb-10 w-full max-w-[1000px] md:mb-16">
+          <VimeoEmbed url={vimeoUrls[0]} title={project.title} />
+        </div>
+      ) : vimeoUrls.length > 1 ? (
+        // 2+ links: all of them go in the grid, including the first
+        <div
+          className={`${wrap} mb-8 mt-8 grid grid-cols-2 md:grid-cols-3 ${gap}`
+          }
+        >
+          {vimeoUrls.map((url) => (
+        <VideoTile key={url} vimeoUrl={url} title={project.title} aspect="aspect-video" />
+      ))}
+              </div>
+) : null}
 
       {/* Videos */}
       {videos.length > 0 && (
@@ -81,7 +93,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     {photos.map((photo, index) => (
       <div
         key={photo}
-        className="relative h-[220px] w-full overflow-hidden md:h-[420px]"
+        className="relative h-[220px] aspect-[4/3] w-full overflow-hidden md:h-[420px]"
       >
         <Image
           src={photo}

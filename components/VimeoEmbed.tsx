@@ -1,5 +1,5 @@
 // components/VimeoEmbed.tsx
-function parseVimeo(url: string) {
+export function parseVimeo(url: string) {
   const match = url.match(
     /vimeo\.com\/(?:channels\/[\w-]+\/|groups\/[\w-]+\/videos\/|video\/|)(\d+)(?:\/([a-zA-Z0-9]+))?/
   );
