@@ -22,10 +22,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const photos = project.projectPhotos ?? [];
   const videos = project.videos ?? [];
+  const vimeoUrls = project.vimeoUrl ?? [];
+  const [mainVimeo, ...otherVimeo] = vimeoUrls;
 
   const wrap = "mx-auto w-full max-w-[1440px]"; // videos + photos only
   const gap = "gap-8 md:gap-14";
-  const twoColumns = "mx-auto mt-8 grid w-full max-w-[1000px] grid-cols-1 gap-4 md:grid-cols-2 md:gap-8";
+  const twoColumns = "mx-auto mt-8 grid w-full max-w-[1000px] grid-cols-2 gap-4 md:grid-cols-2 md:gap-8";
 
   return (
     <main className="mx-auto max-w-[1440px] px-4 pb-16 md:px-10 md:pb-24">
@@ -36,11 +38,27 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="mx-auto mb-10 w-full max-w-[1000px] md:mb-16">
                 <YouTubeEmbed url={project.youtubeUrl} title={project.title} />
               </div>
-            ) : project.vimeoUrl ? (
-              <div className="mx-auto mb-10 w-full max-w-[1000px] md:mb-16">
-                <VimeoEmbed url={project.vimeoUrl} title={project.title} />
-              </div>
-            ) : null}
+            ): null}
+
+                {mainVimeo && (
+          <div className="mx-auto mb-10 w-full max-w-[1000px] md:mb-16">
+            <VimeoEmbed url={mainVimeo} title={project.title} />
+          </div>
+        )}
+          {otherVimeo.length > 0 && (
+          <div
+            className={
+              id === "1"
+                ? twoColumns
+                : `${wrap} mb-8 mt-8 grid grid-cols-2 md:grid-cols-3 ${gap}`
+            }
+          >
+            {otherVimeo.map((url) => (
+              <VimeoEmbed key={url} url={url} title={project.title} />
+            ))}
+          </div>
+        )}
+
 
       {/* Videos */}
       {videos.length > 0 && (
@@ -58,24 +76,24 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       )}
 
       {/* Photos */}
-      {photos.length > 0 && (
-        <div className={photos.length === 2 ? twoColumns : `${wrap} grid grid-cols-2 md:grid-cols-3 ${gap}`}>
-  {photos.map((photo, index) => (
-    <div
-      key={photo}
-      className="relative h-[220px] w-full overflow-hidden md:h-[420px]"
-    >
-      <Image
-        src={photo}
-        alt={`${project.title} image ${index + 1}`}
-        fill
-        sizes="(min-width: 768px) 33vw, 50vw"
-        className="object-cover"
-      />
-    </div>
-  ))}
-</div>
-      )}
+  {photos.length > 0 && (
+  <div className={photos.length === 2 ? twoColumns : `${wrap} grid grid-cols-2 md:grid-cols-3 ${gap}`}>
+    {photos.map((photo, index) => (
+      <div
+        key={photo}
+        className="relative h-[220px] w-full overflow-hidden md:h-[420px]"
+      >
+        <Image
+          src={photo}
+          alt={`${project.title} image ${index + 1}`}
+          fill
+          sizes="(min-width: 768px) 33vw, 50vw"
+          className="md:object-cover"
+        />
+      </div>
+    ))}
+  </div>
+)}
 
     </main>
   );

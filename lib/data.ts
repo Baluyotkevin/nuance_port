@@ -51,7 +51,7 @@ type Project = {
   projectPhotos?: string[];
   videos?: string[];
   youtubeUrl?: string;
-  vimeoUrl?: string;
+  vimeoUrl?: string[];
 };
 
 export const projects: Project[] = [
@@ -59,7 +59,7 @@ export const projects: Project[] = [
     id: 1,
     title: "Jennifer Lopez",
     homePhotos: ["/images/jlo/image1.png", "/images/jlo/image2.jpg", "/images/jlo/image3.jpg"],
-    videos: ["/images/jlo/video1.mp4", "/images/jlo/video2.mp4"],
+    // videos: ["/images/jlo/video1.mp4", "/images/jlo/video2.mp4"],
     projectPhotos: [],
     youtubeUrl: "https://www.youtube.com/watch?v=MXIe0Nu9w_4",
   },
@@ -102,7 +102,8 @@ export const projects: Project[] = [
       "/images/jordanunion/image8.jpg",
       "/images/jordanunion/image9.jpg",
     ],
-    videos: ["/images/jordanunion/video1.mp4", "/images/jordanunion/video2.mp4", "/images/jordanunion/video3.mp4", "/images/jordanunion/video4.mp4", "/images/jordanunion/video5.mp4", "/images/jordanunion/video6.mp4",],
+    vimeoUrl: ["https://vimeo.com/1233903541", "https://vimeo.com/1233903540", "https://vimeo.com/1233903538", "https://vimeo.com/1233903539"]
+    // videos: ["/images/jordanunion/video1.mp4", "/images/jordanunion/video2.mp4", "/images/jordanunion/video3.mp4", "/images/jordanunion/video4.mp4", "/images/jordanunion/video5.mp4", "/images/jordanunion/video6.mp4",],
   },
   {
     id: 5,
@@ -126,7 +127,7 @@ export const projects: Project[] = [
     title: `Nike x Union: "Field General"`,
     homePhotos: ["/images/nikeunion/image1.png", "/images/nikeunion/image2.png", "/images/nikeunion/image3.png"],
     projectPhotos: ["/images/nikeunion/image4.jpg", "/images/nikeunion/image5.png"],
-    vimeoUrl: "https://vimeo.com/957485508/c3dbd92ee9"
+    vimeoUrl: ["https://vimeo.com/957485508/c3dbd92ee9"]
   },
 ];
 
