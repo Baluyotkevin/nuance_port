@@ -13,7 +13,6 @@ export default function Reveal({
 }) {
   const frame = useRef<HTMLDivElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
-  const cursor = useRef<HTMLDivElement>(null);
   const items = useRef<(HTMLParagraphElement | null)[]>([]);
   const [ready, setReady] = useState(false);
 
@@ -28,8 +27,11 @@ export default function Reveal({
       const sc = scroller.current;
       if (!sc) return;
       const s = sc.getBoundingClientRect();
-      // Desktop: follow the cursor. Touch: use the center of the list.
-      const ref = fine.matches && mouse.active ? mouse.y : s.top + s.height / 2;
+
+      const ref =
+        fine.matches && mouse.active
+          ? mouse.y
+          : s.top + s.height / 2;
 
       items.current.forEach((el) => {
         if (!el) return;
@@ -48,20 +50,10 @@ export default function Reveal({
     const onMove = (e: MouseEvent) => {
       mouse.y = e.clientY;
       mouse.active = true;
-      const f = frame.current;
-      const c = cursor.current;
-      if (f && c) {
-        const r = f.getBoundingClientRect();
-        c.style.transform = `translate3d(${e.clientX - r.left}px, ${
-          e.clientY - r.top
-        }px, 0) translate(-50%, -50%)`;
-        c.style.opacity = "1";
-      }
       schedule();
     };
     const onLeave = () => {
       mouse.active = false;
-      if (cursor.current) cursor.current.style.opacity = "0";
       schedule();
     };
 
@@ -87,30 +79,31 @@ export default function Reveal({
     <section className="px-0 pb-16 pt-4 md:pt-8">
       <div
         ref={frame}
-        className="relative h-[60vh] w-full overflow-hidden md:h-[65vh] [@media(hover:hover)]:cursor-none"
+        className="relative h-[60vh] w-full overflow-hidden md:h-[65vh]"
       >
         <Image src={image} alt="" fill priority className="object-cover" />
         <div className="absolute inset-0 bg-black/55" />
-        
+
         <div className="relative z-10 flex h-full flex-col px-6 md:mx-auto md:max-w-[1100px] md:flex-row md:px-10">
           {/* Div 1: heading */}
-          {/* Div 1: heading */}
-            <div className="pt-12 text-center md:w-1/2 md:pt-[calc(22vh+0.75rem)] md:text-left">
-              <h1
-                className={`text-2xl font-light leading-tight transition-[opacity,transform] duration-1000 ease-out md:text-6xl ${
-      ready ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-                }`}
-              >
-                {heading}
-              </h1>
-            </div>
+          <div className="pt-12 text-center md:w-1/2 md:pt-[calc(22vh+0.75rem)] md:text-left">
+            <h1
+              className={`text-2xl font-light leading-tight transition-[opacity,transform] duration-1000 ease-out md:text-6xl ${
+                ready ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+              }`}
+            >
+              {heading}
+            </h1>
+          </div>
 
           {/* Div 2: scrolls inside the photo */}
           <div
             ref={scroller}
             className="min-h-0 flex-1 overflow-y-auto text-center text-2xl font-light [scrollbar-width:none] md:w-2/3 md:text-left md:text-6xl [&::-webkit-scrollbar]:hidden"
           >
-            <div className="h-[6vh] md:h-[22vh]"/>
+            {/* Top spacer: pushes the first word to the bottom on mobile */}
+            <div className="h-[18vh] md:h-[22vh]" />
+
             {words.map((w, i) => (
               <p
                 key={w}
@@ -122,7 +115,8 @@ export default function Reveal({
                 {w}
               </p>
             ))}
-            <div className="h-[6vh] md:h-[22vh]" />
+
+            <div className="h-[18vh] md:h-[22vh]" />
           </div>
         </div>
       </div>

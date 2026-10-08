@@ -1,17 +1,4 @@
-export const profile = {
-  name: "Nuance",
-  role: "Full-stack developer",
-  email: "hello@example.com",
-  bio: [
-    "I build fast, accessible web products for brands and studios, from design systems to production APIs.",
-    "Seven years in, I care most about the details people feel but rarely notice: load time, focus states, and copy that says what happens next.",
-  ],
-  socials: [
-    { label: "GitHub", href: "https://github.com/" },
-    { label: "LinkedIn", href: "https://linkedin.com/" },
-    { label: "Read.cv", href: "https://read.cv/" },
-  ],
-};
+
 
 export const creditLists = [
   { id: 1, name: "Nike" },
