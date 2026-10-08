@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  @apply bg-ink text-lime antialiased;
+
+  font-family: "Gestalo", sans-serif;
+  color: #dbf097;
+
+  min-height: 100vh;
+
+  background-image:
+    /* GRID */
+    linear-gradient(
+      rgba(73, 80, 50, 0.7) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(73, 80, 50, 0.7) 1px,
+      transparent 1px
+    ),
+
+    /* TEXTURE */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.28'/%3E%3C/svg%3E"),
+
+    /* BLACK → GRAY */
+    linear-gradient(
+      to top right,
+      #050505 0%,
+      #111111 45%,
+      #3f3e3e 100%
+    );
+
+  background-size:
+    40px 40px,
+    40px 40px,
+    120px 120px,
+    cover;
+
+  background-attachment: fixed;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
