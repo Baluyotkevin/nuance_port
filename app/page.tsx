@@ -11,7 +11,7 @@ export default function Home() {
         <Skills />
         <Projects />
       </main>
-      <footer className="px-6 py-10 text-center text-sm text-dim">© {new Date().getFullYear()} Nuance&nbsp;&nbsp;Productions</footer>
+      <footer className="px-6 py-10 text-center text-sm text-dim">© {new Date().getFullYear()} Nuance&nbsp;&nbsp;&nbsp;Productions</footer>
     </>
   );
 }
