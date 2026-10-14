@@ -14,7 +14,7 @@ export default function Header() {
           mx-auto flex items-center justify-between
           w-[calc(100%-2rem)] max-w-[300px] h-10 px-4
           md:max-w-[490px] md:h-[72px] md:px-7
-          bg-black/40 backdrop-blur-sm rounded-[20px]
+          bg-black/40 backdrop-blur-sm md:rounded-[20px] rounded-xl
         "
       >
         <Link href="/" className="flex items-center">
