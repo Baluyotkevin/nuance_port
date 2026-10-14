@@ -94,7 +94,7 @@ export const projects: Project[] = [
   },
   {
     id: 5,
-    title: "Dr Martens",
+    title: "Dr. Martens",
     homePhotos: ["/images/docmartens/image1.png", "/images/docmartens/image2.jpg", "/images/docmartens/image3.png"],
     projectPhotos: [
       "/images/docmartens/image4.webp",

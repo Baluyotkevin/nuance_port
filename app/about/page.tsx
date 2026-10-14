@@ -2,9 +2,9 @@
 import Reveal from "@/components/Reveal";
 
 const words = [
-  "A Production Company", "Woman-Owned", "Obsessed with the details",
-  "Vision", "Taste", "Partnership", "Thorough", "Savvy",
-  "Inclusive", "Refined", "An Experience",
+  "a production company", "woman-owned.", "obsessed with the details.",
+  "vision.", "taste.", "partnership.", "thorough.", "savvy.",
+  "inclusive.", "refined.", "an experience.",
 ];
 
 export default function AboutPage() {

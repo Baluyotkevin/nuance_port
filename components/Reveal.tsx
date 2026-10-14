@@ -110,7 +110,7 @@ export default function Reveal({
                 ref={(el) => {
                   items.current[i] = el;
                 }}
-                className="py-2 leading-tight opacity-10 will-change-[opacity,transform] md:py-3"
+                className="ml-3 py-2 leading-tight opacity-10 will-change-[opacity,transform] md:py-1"
               >
                 {w}
               </p>

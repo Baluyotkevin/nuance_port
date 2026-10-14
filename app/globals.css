@@ -7,8 +7,10 @@ html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   @apply bg-ink text-lime antialiased;
-
-  font-family: "Gestalo", sans-serif;
+  font-family: var(--font-protage), "Gestalo", sans-serif;
+  font-synthesis: none;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "clig" 0, "dlig" 0, "hlig" 0, "calt" 0;
   color: #dbf097;
 
   min-height: 100vh;
