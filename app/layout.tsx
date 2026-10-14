@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#171814" };
 const protage = localFont({
-  src: "./fonts/gcprotage-thin.otf",
+  src: "./fonts/GCPROTAGE-Thin.otf",
   weight: "100",
   variable: "--font-protage",
 });
